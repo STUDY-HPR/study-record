@@ -1,1 +1,2 @@
-# study-record
+# F-lab 스터디
+
