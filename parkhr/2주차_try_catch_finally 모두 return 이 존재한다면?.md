@@ -31,6 +31,8 @@ public class ExceptionTest {
 
 근데 만약 finally 블럭에서 return 으로 값을 넘겨주면 어떻게 될까?
 
+<br/>
+
 ```java
 public static int test() {
     try{
@@ -45,6 +47,8 @@ public static int test() {
     }
 }
 ```
+
+<br/>
 
 decompile 해보면 이와 같이 finally 블럭 안에서 정의한 return 이 try catch 문에 치환된 것을 볼 수 있다.
 
