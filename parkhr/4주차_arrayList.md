@@ -14,7 +14,7 @@
 
 - arrayList는 capacity를 갖고 있음.
 
-- capacity는 요소를 저장하기 위해 사용되는 list size임
+- capacity는 요소를 저장하기 위해 사용되는 list size이다.
 
 - 요소가 추가되면 capacity는 자동으로 증가함
   1. 힙메모리에 더 큰 크기의 메모리 생성
@@ -26,3 +26,11 @@
 - 만약 Thread들이 동시에 접근하여 변경하려면 외부에서 동기화 작업을 해줘야함.
 
 - 다른방법 - `List list = Collections.synchronizedList(new ArrayList(...));` 요런식으로하면됨
+
+
+<br/>
+
+참고
+
+- https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html<br/>
+- https://www.geeksforgeeks.org/arraylist-in-java/?ref=lbp
