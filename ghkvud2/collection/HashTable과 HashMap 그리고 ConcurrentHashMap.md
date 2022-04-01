@@ -26,8 +26,9 @@
 ### 3. Fail-Fast와 Fail-Safe Iterator의 차이점
 
 1. Concurrent Modification
-   - `Concurrent Modification` 은 다른 작업이 수행하고 있는 객체를 동시에 수정하는 것이다.
-
+   
+- `Concurrent Modification` 은 다른 작업이 수행하고 있는 객체를 동시에 수정하는 것이다.
+   
 2. Fail-Fast Iterator
 
    - `Fail-Fast`는 가능한 빨리 예외가 노출시키고 동작을 중단시킨다.
@@ -117,7 +118,11 @@
    - 순회하는 동안에 `m.put("NINE", 9)` 을 통해 요소를 추가했는데, 그 요소가 그대로 출력된 것을 볼 수 있다.
    - 즉, `ConcurrentHashMap`은 원본 컬렉션에 대해서 순회 연산을 한다고 볼 수 있다.
 
+### 4. ConcurrentHashMap
 
+- 멀티스레드 환경에서 동기화 문제를 해결하기 위해 사용되는 `ConcurrentHashMap`은 `HashTable`의 단점을 보완하는 자료구조이다.
+- ConcurrentHashMap은 Map을 여러 개의 세그먼트로 나누는데 스레드는 자신이 연산을 수행하는 세그먼트영역에 대해서만 lock을 건다. 
+- 세그먼트의 수는 concurreny level의 값으로 결정되는데 default 값은 16이다. 즉, 16개의 서로 다른 스레드가 동시에 다른 세그먼트에 연산을 수행할 수 있다는 뜻이다.
 
 ---
 
