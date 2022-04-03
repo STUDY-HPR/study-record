@@ -42,3 +42,6 @@ key(부모 노드) <= key(자식 노드)
 
 ### 힙의 삽입
 ![Untitled (8)](https://user-images.githubusercontent.com/46472772/161410340-0ab8b611-bb79-4665-8c65-717271b34992.png)
+
+### 힙의 삭제
+<img width="630" alt="9" src="https://user-images.githubusercontent.com/46472772/161411647-21c9d659-21c7-4110-82b9-4e23e1537b4d.PNG">
