@@ -1,6 +1,6 @@
 ## java stack의 문제점
 
-- Stack은 Vector를 상속 받고 있는데, 모든 연산에 synchronized 걸려있어서 성능에 안 좋다.
+- Stack은 Vector를 상속 받고 있는데, 모든 연산에 method synchronized 걸려있어서 성능에 안 좋다.
 
 - 단순한 Iterator 의 탐색 작업에서도 get() 메서드 실행 시 매번 Lock 이 발생하게 되므로 오버헤드가 커진다.
 
