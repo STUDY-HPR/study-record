@@ -1,6 +1,6 @@
 ## HashTable과 HashMap 그리고 ConcurrentHashMap
 
-### 1. HashTable과 HashMap
+### 1. HashTable과 HashMap의 차이점
 
 1. Thread-Safe
    - HashTable은 thread-safe 하기때문에 멀티스레드 환경에서 사용할 수 있지만 HashMap은 그렇지 않다.
@@ -26,9 +26,7 @@
 ### 3. Fail-Fast와 Fail-Safe Iterator의 차이점
 
 1. Concurrent Modification
-   
-- `Concurrent Modification` 은 다른 작업이 수행하고 있는 객체를 동시에 수정하는 것이다.
-   
+   - `Concurrent Modification` 은 다른 작업이 수행하고 있는 객체를 동시에 수정하는 것이다.
 2. Fail-Fast Iterator
 
    - `Fail-Fast`는 가능한 빨리 예외가 노출시키고 동작을 중단시킨다.
@@ -44,14 +42,16 @@
      Map.put("foo1", "bar1");
      Map.put("foo2", "bar2");
      
-     Iterator iter = map.keySet().Iterator();
+     //iterator를 생성하는 시점에 원본 modCount를 iterator 내부로 복사
+     Iterator iter = map.keySet().Iterator(); 
+     
      while(iter.hasNext()){
-         System.out.println(iter.next());
+         System.out.println(iter.next()); //원본 modCount와 iterator 내부 modCount를 비교
          map.put("foo3", "bar3"); // 요소를 추가하면 다음 next() 메소드 호출시 예외를 발생시킴
      }
      ```
      - Fast-Fail은 컬렉션을 순회하는 동안에 수정이 발생하면 예외를 발생시킨다.
-     - Fast-Fail은 원본 컬렉션에 대해서 순회 연산을 수행한다.
+     - Fast-Fail은 **원본 컬렉션에 대해서 순회 연산을 수행한다.**
      - 원본 컬렉션에 대해서 순회 연산을 수행하기 때문에 추가적인 컬렉션 복사가 없으므로 메모리를 절약할 수 있다.
      - 대표적으로 `ArrayList, HashMap, Vector` 등이 Fail-Fast Iterator를 사용한다.
 
@@ -67,22 +67,24 @@
      CopyOnWriteArrayList<Integer> list 
      		= new CopyOnWriteArrayList<Integer>(new Integer[] {1, 7, 9, 11});
      
+     // 원본 컬렉션에 대해 복사본을 생성하고 그에 대한 iterator를 반환한다.
      Iterator<Integer> itr = list.Iterator();
+     
      while (itr.hasNext()) {
      	Integer i = itr.next();
      	System.out.println(i);
          
      	if (i == 7) {
-     		list.add(15); // 추가한 요소는 print되지 않고 예외도 발생하지 않는다. 
+     		list.add(15); // 원본 컬렉션에 추가한 요소는 출력도 되지않고 예외도 발생하지 않는다. 
      	}
-     }
+   }
      ```
-
+     
      - Fast-Safe는 원본 컬렉션에 대한 복사본에 대해서 순회 연산을 수행한다.
      - Fast-Safe는 순회하는 동안 원본 컬렉션에 수정이 발생해도 예외를 발생시키지 않는다.
-     - 원본 컬렉션을 복사해야하기 때문에 메모리와 시간이 상대적으로 더 든다.
+   - 원본 컬렉션을 복사해야하기 때문에 메모리와 시간이 상대적으로 더 든다.
      - 대표적으로 `ConcurrentHashMap과 CopyOnWriteArrayList` 등이 Fast-Safe를 사용한다.
-
+     
      
 
 4. ConcurrentHashMap은 Fail-Safe이지만, 원본 컬렉션을 사용한다.

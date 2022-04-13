@@ -27,30 +27,29 @@
      ```
 
      - Map에 저장한 순서대로 엔트리가 출력되는 것을 볼 수 있다.
-     - 위의 코드에서 아래와 같은 코드를 추가하고 Map을 다시 출력하면 엔트리의 순서가 유지되는 것을 확인할 수 있다.
+     - 아래와 같은 코드를 추가하고 Map을 다시 출력하면 엔트리의 순서가 유지되는 것을 확인할 수 있다.
 
      ```java
-     // 위 코드와 동일
      map.put("2", "2222"); // 기존 key에 대한 value를 변경
-     map.get("1"); // 저장된 key에 접근
+     map.get("1"); 		 // 저장된 key에 접근
      
      for (Entry<String, String> string : map.entrySet()) {
      	System.out.println(string);
      } 
      ```
-
-     ```
+     
+```
      [출력 결과]
-     2=2
+     2=2222
      1=1
      3=3
      ```
-
+   
 2. Access-Order
 
    - Map 엔트리에 접근한 순서대로 순서를 유지하는 방식이다.
 
-   - 가장 처음에 접근한 엔트리가 가장 마지막에 나타나는 방식이다.
+   - 맨 처음에 접근한 엔트리가 가장 마지막에 나타나는 방식이다.
 
      ```java
      @Test
@@ -110,13 +109,16 @@
    ```JAVA
    @Test
    public void givenLinkedHashMap_whenRemovesEldestEntry_thenCorrect() {
+       
        LinkedHashMap<Integer, String> map
          = new MyLinkedHashMap<>(16, .75f, true);
+       
        map.put(1, null);
        map.put(2, null);
        map.put(3, null);
        map.put(4, null);
        map.put(5, null);
+       
        Set<Integer> keys = map.keySet();
        assertEquals("[1, 2, 3, 4, 5]", keys.toString());
     
