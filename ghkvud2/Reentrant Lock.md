@@ -72,3 +72,4 @@
 [How to use Lock and ReentrantLock for Synchronization in Java - Example Tutorial](https://javarevisited.blogspot.com/2014/10/how-to-use-locks-in-multi-threaded-java-program-example.html#axzz7QDk3Gbku)
 
 [Binary Semaphore vs Reentrant Lock](https://www.baeldung.com/java-binary-semaphore-vs-reentrant-lock)
+
