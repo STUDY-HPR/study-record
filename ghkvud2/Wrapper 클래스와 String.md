@@ -101,6 +101,7 @@ System.out.println(s3.equals(s4));
 
 #### intern() 메소드
 
+
 - `intern` 메소드는 `String Pool`에 `equals()` 메소드로 비교하여 같은 문자열이 존재하면 해당 객체를 반환하고 그렇지 않으면 `String Pool`에 저장한다.
 
 ```java
@@ -109,6 +110,12 @@ String s1 = "java"
 
 - 위와 같이 `리터럴`로 생성한 객체는 내부적으로 `intering`을 거치게 되는데 최초에는 `String Pool`에 `java`문자열이 존재하지 않아 해당 문자열을 `String Pool`에 저장해놓는다.
 - 그 이후에 같은 `리터럴`로 객체를 생성할 경우 `String Pool`에 있는 값을 반환한다.
+
+- intern() 메소드를 호출하면 JVM은 heap영역의 StringPool에서 해당 문자열이 존재하는지 확인한다. 같은 문자열이 존재하면 해당 객체가 반환되고, 그렇지 않으면 새로운 객체를 생성하여 pool에 추가한 뒤 반환한다.
+
+- intern() 메소드를 사용할 경우 응답 시간이 더 느리다. 그 이유는 pool에 존재하는 모든 String 객체에 대해서 eqauls() 메소드를 수행하기 때문이다. 즉, 메모리 관점에서는 성능이 더 좋을 수 있지만 CPU/응답시간 측면에서는 좋지 않은 성능을 보인다.
+
+
 
 
 
